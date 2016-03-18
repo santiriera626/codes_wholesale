@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Terence Ponce"]
   spec.email         = ["terenceponce@gmail.com"]
 
-  spec.summary       = %q{Ruby wrapper for the CodesWholesale API}
-  spec.description   = %q{Ruby wrapper for the CodesWholesale API}
+  spec.summary       = %q{A Ruby interface the CodesWholesale API}
+  spec.description   = %q{A Ruby interface the CodesWholesale API}
   spec.homepage      = "https://github.com/terenceponce/codes_wholesale"
   spec.license       = "MIT"
 
