@@ -1,31 +1,29 @@
+require 'codes_wholesale/configurable'
+
 module CodesWholesale
   class Client
-    attr_accessor :client_id, :client_secret, :access_token, :token_type, :expires_in
+    include CodesWholesale::Configurable
 
-    def initialize(opts = {})
-      @client_id = opts[:client_id]
-      @client_secret = opts[:client_secret]
+    def initialize(options = {})
+      CodesWholesale::Configurable.keys.each do |key|
+        instance_variable_set(:"@#{key}", options[key] || CodesWholesale.instance_variable_get(:"@#{key}"))
+      end
     end
 
-    def authenticate
-      connection = Faraday.new(url: CodesWholesale::API_URL) do |faraday|
-        faraday.request :url_encoded
+    def token
+      OAuth2::Client.new(client_id, client_secret, site: "#{api_endpoint}/oauth/token").client_credentials.get_token
+    end
+
+    def connection
+      Faraday.new(url: api_endpoint) do |faraday|
+        faraday.request :oauth2, token.token
         faraday.response :logger
         faraday.adapter Faraday.default_adapter
       end
+    end
 
-      options = {
-        grant_type: 'client_credentials',
-        client_id: client_id,
-        client_secret: client_secret
-      }
-
-      response = connection.post('/oauth/token', options)
-
-      response_body = JSON.parse(response.body)
-      self.access_token = response_body['access_token']
-      self.token_type = response_body['token_type']
-      self.expires_in = response_body['expires_in']
+    def request(method, url, options = {})
+      connection.send(method.to_sym, url, options)
     end
   end
 end

@@ -9,5 +9,3 @@ VCR.configure do |config|
   config.cassette_library_dir = 'test/fixtures'
   config.hook_into :webmock
 end
-
-CodesWholesale::API_URL = 'https://sandbox.codeswholesale.com'
