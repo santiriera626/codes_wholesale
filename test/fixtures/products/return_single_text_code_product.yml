@@ -1,0 +1,159 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ff72ce315d1259e822f47d87d02d261e:%242a%2410%24E2jVWDADFA5gh6zlRVcrlOOX01Q%2FHJoT6hXuDMJxek.YEo.lkO2T6@sandbox.codeswholesale.com/oauth/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      - no-store
+      Content-Type:
+      - application/json;charset=UTF-8
+      Date:
+      - Thu, 31 Mar 2016 02:11:20 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      - no-cache
+      Server:
+      - Apache-Coyote/1.1
+      Strict-Transport-Security:
+      - max-age=31536000 ; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"bc43d52a-9032-4c2e-82be-832307eabf69","token_type":"bearer","expires_in":2034}'
+    http_version: 
+  recorded_at: Thu, 31 Mar 2016 02:11:20 GMT
+- request:
+    method: get
+    uri: https://sandbox.codeswholesale.com/v1/products/ffe2274d-5469-4b0f-b57b-f8d21b09c24c
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - CodesWholesale Ruby Gem 0.1.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer bc43d52a-9032-4c2e-82be-832307eabf69
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Type:
+      - application/json;charset=UTF-8
+      Date:
+      - Thu, 31 Mar 2016 02:11:22 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache-Coyote/1.1
+      Strict-Transport-Security:
+      - max-age=31536000 ; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"productId":"ffe2274d-5469-4b0f-b57b-f8d21b09c24c","identifier":"TWTCO","name":"Test
+        with text codes only","platform":"Uplay","quantity":0,"regions":["PL"],"languages":["pl"],"prices":[{"value":1.11,"from":1,"to":9},{"value":0.11,"from":100,"to":null},{"value":0.41,"from":10,"to":99}],"links":[{"rel":"self","href":"https://sandbox.codeswholesale.com/v1/products/ffe2274d-5469-4b0f-b57b-f8d21b09c24c"},{"rel":"buy","href":"https://sandbox.codeswholesale.com/v1/orders?productId=ffe2274d-5469-4b0f-b57b-f8d21b09c24c"}],"releaseDate":null}'
+    http_version: 
+  recorded_at: Thu, 31 Mar 2016 02:11:22 GMT
+- request:
+    method: get
+    uri: https://sandbox.codeswholesale.com/v1/products/ffe2274d-5469-4b0f-b57b-f8d21b09c24c
+    body:
+      encoding: UTF-8
+      string: '{"productId":"ffe2274d-5469-4b0f-b57b-f8d21b09c24c","identifier":"TWTCO","name":"Test
+        with text codes only","platform":"Uplay","quantity":0,"regions":["PL"],"languages":["pl"],"prices":[{"value":1.11,"from":1,"to":9},{"value":0.11,"from":100,"to":null},{"value":0.41,"from":10,"to":99}],"links":[{"rel":"self","href":"https://sandbox.codeswholesale.com/v1/products/ffe2274d-5469-4b0f-b57b-f8d21b09c24c"},{"rel":"buy","href":"https://sandbox.codeswholesale.com/v1/orders?productId=ffe2274d-5469-4b0f-b57b-f8d21b09c24c"}],"releaseDate":null}'
+    headers:
+      User-Agent:
+      - CodesWholesale Ruby Gem 0.1.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer bc43d52a-9032-4c2e-82be-832307eabf69
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Type:
+      - application/json;charset=UTF-8
+      Date:
+      - Thu, 31 Mar 2016 02:11:23 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache-Coyote/1.1
+      Strict-Transport-Security:
+      - max-age=31536000 ; includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"productId":"ffe2274d-5469-4b0f-b57b-f8d21b09c24c","identifier":"TWTCO","name":"Test
+        with text codes only","platform":"Uplay","quantity":0,"regions":["PL"],"languages":["pl"],"prices":[{"value":1.11,"from":1,"to":9},{"value":0.11,"from":100,"to":null},{"value":0.41,"from":10,"to":99}],"links":[{"rel":"self","href":"https://sandbox.codeswholesale.com/v1/products/ffe2274d-5469-4b0f-b57b-f8d21b09c24c"},{"rel":"buy","href":"https://sandbox.codeswholesale.com/v1/orders?productId=ffe2274d-5469-4b0f-b57b-f8d21b09c24c"}],"releaseDate":null}'
+    http_version: 
+  recorded_at: Thu, 31 Mar 2016 02:11:24 GMT
+recorded_with: VCR 3.0.1
