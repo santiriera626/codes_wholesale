@@ -3,7 +3,7 @@ require "codes_wholesale/configurable"
 require "codes_wholesale/default"
 require "codes_wholesale/version"
 require 'faraday'
-require 'faraday_middleware'
+require 'sawyer'
 require 'oauth2'
 require 'json'
 

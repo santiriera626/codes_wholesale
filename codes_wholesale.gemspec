@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "byebug"
 
   spec.add_dependency "faraday", "0.9.2"
-  spec.add_dependency "faraday_middleware", "0.9.2"
+  spec.add_dependency "sawyer", "0.7.0"
   spec.add_dependency "oauth2", "1.1.0"
   spec.add_dependency "json", "1.8.3"
 end

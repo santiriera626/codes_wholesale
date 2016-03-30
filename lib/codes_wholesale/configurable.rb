@@ -1,13 +1,16 @@
 module CodesWholesale
   module Configurable
-    attr_accessor :client_id, :client_secret, :environment
+    attr_accessor :client_id, :client_secret, :environment,
+                  :user_agent, :api_version
 
     class << self
       def keys
         @keys ||= [
           :client_id,
           :client_secret,
-          :environment
+          :environment,
+          :user_agent,
+          :api_version
         ]
       end
     end
@@ -25,7 +28,7 @@ module CodesWholesale
     alias setup reset!
 
     def api_endpoint
-      "https://#{api_subdomain}.codeswholesale.com"
+      "https://#{api_subdomain}.codeswholesale.com/#{@api_version}"
     end
 
     private

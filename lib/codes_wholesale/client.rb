@@ -14,16 +14,33 @@ module CodesWholesale
       OAuth2::Client.new(client_id, client_secret, site: "#{api_endpoint}/oauth/token").client_credentials.get_token
     end
 
-    def connection
-      Faraday.new(url: api_endpoint) do |faraday|
-        faraday.request :oauth2, token.token
-        faraday.response :logger
-        faraday.adapter Faraday.default_adapter
+    def agent
+      @agent ||= Sawyer::Agent.new(api_endpoint, sawyer_options) do |http|
+        http.headers[:content_type] = 'application/json'
+        http.headers[:user_agent] = user_agent
+        http.authorization :Bearer, token.token
+        http.response :logger
+        http.adapter Faraday.default_adapter
       end
     end
 
-    def request(method, url, options = {})
-      connection.send(method.to_sym, url, options)
+    def get(url, options = {})
+      request(:get, url, options)
     end
+
+    def post(url, options = {})
+      request(:post, url, options)
+    end
+
+    private
+
+      def request(method, url, options = {})
+        @last_response = response = agent.call(method, URI::Parser.new.escape(url.to_s), options)
+        response.data
+      end
+
+      def sawyer_options
+        { link_parser: Sawyer::LinkParsers::Simple.new }
+      end
   end
 end
