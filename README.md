@@ -32,6 +32,9 @@ products = client.products
 
 # Get your current account details
 account = client.account
+
+# Order a product
+order = client.order('ffe2274d-5469-4b0f-b57b-f8d21b09c24c')
 ```
 
 ## Development

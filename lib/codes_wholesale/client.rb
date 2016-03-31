@@ -1,12 +1,14 @@
 require 'codes_wholesale/configurable'
 require 'codes_wholesale/client/accounts'
 require 'codes_wholesale/client/products'
+require 'codes_wholesale/client/orders'
 
 module CodesWholesale
   class Client
     include CodesWholesale::Configurable
     include CodesWholesale::Client::Accounts
     include CodesWholesale::Client::Products
+    include CodesWholesale::Client::Orders
 
     def initialize(options = {})
       CodesWholesale::Configurable.keys.each do |key|
