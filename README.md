@@ -22,12 +22,16 @@ Or install it yourself as:
 
 ```ruby
 # Authentication
-
 client = CodesWholesale::Client.new(client_id: "ff72ce315d1259e822f47d87d02d261e", client_secret: "$2a$10$E2jVWDADFA5gh6zlRVcrlOOX01Q/HJoT6hXuDMJxek.YEo.lkO2T6")
 
 # Find a product
-
 product = client.products('ffe2274d-5469-4b0f-b57b-f8d21b09c24c')
+
+# Get all products
+products = client.products
+
+# Get your current account details
+account = client.account
 ```
 
 ## Development

@@ -1,9 +1,11 @@
 require 'codes_wholesale/configurable'
+require 'codes_wholesale/client/accounts'
 require 'codes_wholesale/client/products'
 
 module CodesWholesale
   class Client
     include CodesWholesale::Configurable
+    include CodesWholesale::Client::Accounts
     include CodesWholesale::Client::Products
 
     def initialize(options = {})
