@@ -102,4 +102,14 @@ class ProductTest < Minitest::Test
       assert_equal nil, product.release_date
     end
   end
+
+  def test_it_returns_all_products
+    VCR.use_cassette('products/return_all_products') do
+      products = @client.products
+
+      assert_equal 4, products.count
+      assert_equal '33e3e81d-2b78-475a-8886-9848116f5133', products.first.id
+      assert_equal 'ffe2274d-5469-4b0f-b57b-f8d21b09c24c', products.last.id
+    end
+  end
 end
