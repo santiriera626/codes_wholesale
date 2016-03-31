@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "vcr", "3.0.1"
   spec.add_development_dependency "webmock", "1.24.2"
-  spec.add_development_dependency "byebug"
+  spec.add_development_dependency "byebug", '8.2.2'
 
   spec.add_dependency "faraday", "0.9.2"
   spec.add_dependency "sawyer", "0.7.0"
