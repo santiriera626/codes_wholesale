@@ -45,7 +45,7 @@ module CodesWholesale
     alias setup reset!
 
     def api_endpoint
-      "https://#{api_subdomain}.codeswholesale.com/#{@api_version}"
+      "https://#{api_subdomain}.codeswholesale.com:443/#{@api_version}"
     end
 
     private

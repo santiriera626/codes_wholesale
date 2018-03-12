@@ -26,8 +26,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "webmock", "1.24.2"
   spec.add_development_dependency "byebug", '8.2.2'
 
-  spec.add_dependency "faraday", "0.9.2"
-  spec.add_dependency "sawyer", "0.7.0"
   spec.add_dependency "oauth2", "1.1.0"
-  spec.add_dependency "json", "1.8.3"
+  spec.add_dependency('httparty', '~> 0.15')
+  spec.add_dependency('rest-client', '~> 2.0')
+  spec.add_dependency('activesupport', '>= 3.0.0')
+  spec.add_dependency('nokogiri', '~> 1.8')
 end

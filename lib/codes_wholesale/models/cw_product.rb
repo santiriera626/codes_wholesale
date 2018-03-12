@@ -1,7 +1,7 @@
 module CodesWholesale
   module Models
-    class Product
-      attr_reader :id, :identifier, :name, :platform, :quantity,
+    class CwProduct
+      attr_reader :id, :identifier, :name, :platform, :quantity, :images,
                   :regions, :languages, :prices, :links, :release_date
 
       def initialize(opts = {})
@@ -10,6 +10,7 @@ module CodesWholesale
         @name         = opts[:name]
         @platform     = opts[:platform]
         @quantity     = opts[:quantity]
+        @images       = opts[:images]
         @regions      = opts[:regions]
         @languages    = opts[:languages]
         @prices       = opts[:prices]

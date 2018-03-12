@@ -1,4 +1,4 @@
-require 'codes_wholesale/models/product'
+require 'codes_wholesale/models/cw_product'
 
 module CodesWholesale
   class Client
@@ -6,7 +6,7 @@ module CodesWholesale
     # Methods for the Products API
     #
     # @see https://docs.codeswholesale.com/api-documentation
-    module Products
+    module CwProducts
 
       # Get all products or get a specific product
       #
@@ -19,12 +19,13 @@ module CodesWholesale
       #   CodesWholesale.products
       # @example Get a specific product
       #   CodesWholesale.products('6313677f-5219-47e4-a067-7401f55c5a3a')
-      def products(id = nil)
+      def products(id = nil, params = {})
         if id.nil?
-          products = get('products')
-          products[:items].map { |attributes| CodesWholesale::Models::Product.new(attributes) }
+          products = get('products', {query: params})
+          binding.pry
+          products[:items].map { |attributes| CodesWholesale::Models::CwProduct.new(attributes) }
         else
-          CodesWholesale::Models::Product.new(get("products/#{id}"))
+          CodesWholesale::Models::CwProduct.new(get("products/#{id}"))
         end
       end
     end

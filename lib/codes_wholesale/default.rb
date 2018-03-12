@@ -9,10 +9,10 @@ module CodesWholesale
     ENVIRONMENT = 'production'.freeze
 
     # Default API version
-    API_VERSION = 'v1'.freeze
+    API_VERSION = 'v2'.freeze
 
     # Default User-Agent header string
-    USER_AGENT = "CodesWholesale Ruby Gem #{CodesWholesale::VERSION}".freeze
+    USER_AGENT = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0".freeze
 
     class << self
 
@@ -44,7 +44,7 @@ module CodesWholesale
       # Default OAuth app secret from ENV
       # @return [String]
       def client_secret
-        ENV['CODES_WHOLESALE_CLIENT_SECRET']
+        ENV['CODES_WHOLESALE_SECRET']
       end
 
       # Default User-Agent header string from ENV or {USER_AGENT}

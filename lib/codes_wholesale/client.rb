@@ -1,6 +1,6 @@
 require 'codes_wholesale/configurable'
 require 'codes_wholesale/client/accounts'
-require 'codes_wholesale/client/products'
+require 'codes_wholesale/client/cw_products'
 require 'codes_wholesale/client/orders'
 
 module CodesWholesale
@@ -11,7 +11,7 @@ module CodesWholesale
   class Client
     include CodesWholesale::Configurable
     include CodesWholesale::Client::Accounts
-    include CodesWholesale::Client::Products
+    include CodesWholesale::Client::CwProducts
     include CodesWholesale::Client::Orders
 
     def initialize(options = {})
@@ -19,6 +19,7 @@ module CodesWholesale
       CodesWholesale::Configurable.keys.each do |key|
         instance_variable_set(:"@#{key}", options[key] || CodesWholesale.instance_variable_get(:"@#{key}"))
       end
+      @token = token
     end
 
     # Authenticates and get the token in order to make requests to the API
@@ -26,19 +27,6 @@ module CodesWholesale
     # @return [OAuth2::AccessToken]
     def token
       OAuth2::Client.new(client_id, client_secret, site: "#{api_endpoint}/oauth/token").client_credentials.get_token
-    end
-
-    # The actual client that talks to the CodesWholesale API
-    #
-    # @return [Sawyer::Agent]
-    def agent
-      @agent ||= Sawyer::Agent.new(api_endpoint, sawyer_options) do |http|
-        http.headers[:content_type] = 'application/json'
-        http.headers[:user_agent] = user_agent
-        http.authorization :Bearer, token.token
-        http.response :logger
-        http.adapter Faraday.default_adapter
-      end
     end
 
     # Make a HTTP GET request
@@ -62,8 +50,13 @@ module CodesWholesale
     private
 
       def request(method, url, options = {})
-        @last_response = response = agent.call(method, URI::Parser.new.escape(url.to_s), options)
-        response.data
+        options[:headers] ||= {}
+        options[:headers]["Authorization"] = "Bearer #{@token.token}"
+        @last_response = response = HTTParty.send(method,
+           URI::Parser.new.escape("#{api_endpoint}/#{url.to_s}"),
+           options
+        )
+        response.deep_symbolize_keys
       end
 
       def sawyer_options
