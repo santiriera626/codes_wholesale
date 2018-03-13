@@ -22,7 +22,6 @@ module CodesWholesale
       def products(id = nil, params = {})
         if id.nil?
           products = get('products', {query: params})
-          binding.pry
           products[:items].map { |attributes| CodesWholesale::Models::CwProduct.new(attributes) }
         else
           CodesWholesale::Models::CwProduct.new(get("products/#{id}"))
